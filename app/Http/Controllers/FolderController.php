@@ -16,7 +16,9 @@ class FolderController extends Controller
      */
     public function index()
     {
-        return view('folders.index');
+        $user = Auth::user();
+        $folders = Folder::where('user_id',$user->id)->get();
+        return view('folders.index', compact('folders'));
     }
 
     /**
