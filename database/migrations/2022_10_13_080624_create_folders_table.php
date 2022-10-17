@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name')->max(50);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

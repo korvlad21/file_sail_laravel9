@@ -89,6 +89,7 @@ class FolderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Folder::where('id',$id)->delete();
+        return response()->json(['success'=>'Успешно']);
     }
 }
