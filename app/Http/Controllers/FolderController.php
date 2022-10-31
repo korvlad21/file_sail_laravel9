@@ -90,6 +90,6 @@ class FolderController extends Controller
     public function destroy($id)
     {
         Folder::where('id',$id)->delete();
-        return response()->json(['success'=>'Успешно']);
+        return redirect()->route('folders.index')->with('success', "Папка успешно удалена!");;
     }
 }

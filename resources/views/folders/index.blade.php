@@ -33,11 +33,11 @@
                                 </p>
                                 <p class="top-name center-block text-center">{{ $folder->name }}</p>
                                 <p class="top-name center-block text-center">
-
-                                    <button class="btn btn-primary" id="edit-folder" type="button">✎</button>
-                                <form action="{ route('folders.destroy', $folder->id) }}" method="post">
+                                <form action="{{ route('folders.destroy', $folder->id) }}" method="post"
+                                    class="top-name center-block text-center">
                                     @csrf
                                     @method('delete')
+                                    <button class="btn btn-primary" type="button">✎</button>
                                     <button class="btn btn-danger" type="submit">X</button>
                                 </form>
 
