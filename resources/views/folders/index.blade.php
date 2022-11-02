@@ -31,13 +31,14 @@
                                             src="{{ asset('storage/images/folder.png') }}" alt="" width="100"
                                             height="100"></a>
                                 </p>
-                                <p class="top-name center-block text-center">{{ $folder->name }}</p>
+                                <p class="top-name center-block text-center text">{{ $folder->name }}</p>
                                 <p class="top-name center-block text-center">
                                 <form action="{{ route('folders.destroy', $folder->id) }}" method="post"
                                     class="top-name center-block text-center">
                                     @csrf
-                                    @method('delete')
-                                    <button class="btn btn-primary" type="button">✎</button>
+                                    @method('put')
+                                    <button class="btn btn-primary edit" data-id="{{ $folder->id }}"
+                                        type="button">✎</button>
                                     <button class="btn btn-danger" type="submit">X</button>
                                 </form>
 
