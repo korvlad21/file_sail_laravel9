@@ -58,27 +58,14 @@ $(document).ready(function() {
     function folder(id) {
         $.ajax({
             type: "PUT",
-            url: url,
+            url: route,
             data: { id: id },
             dataType: 'json',
             headers: {
                 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(result) {
-                let new_folder = '<div class="top-cover center-block"></div>';
-                new_folder += '<p class="top-name center-block text-center"><a href="#"><img src="' + window.location.origin + '/storage/images/folder.png" alt="" width="100" height="100"></a></p>'
-                new_folder += '<p class="top-name center-block text-center">' + result['name'] + '</p>'
-                new_folder += '<p class="top-name center-block text-center">'
-                new_folder += '<form action="' + window.location.origin + '/folders/' + result['id'] + '" method="post"class = "top-name center-block text-center" > '
-                new_folder += '<input type="hidden" name="_token" value="' + $('meta[name="csrf-token"]').attr('content') + '">'
-                new_folder += '<input type="hidden" name="_method" value="delete">'
-                new_folder += '<button class="btn btn-primary" type="button">✎</button>'
-                new_folder += '<button class="btn btn-danger" type="submit">X</button>'
-                new_folder += '</form></p>'
-                $('#new_folder').html(new_folder)
-                $('#new_folder').removeAttr('id')
-                let newDivFolder = '<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" id="new_folder"></div>'
-                $('.folders').append(newDivFolder)
+                console.log(result);
             },
             error: function(result) {
                 console.log(result);
