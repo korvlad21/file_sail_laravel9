@@ -36,7 +36,7 @@
                                 <form action="{{ route('folders.destroy', $folder->id) }}" method="post"
                                     class="top-name center-block text-center">
                                     @csrf
-                                    @method('put')
+                                    @method('delete')
                                     <button class="btn btn-primary edit" data-id="{{ $folder->id }}"
                                         type="button">✎</button>
                                     <button class="btn btn-danger" type="submit">X</button>

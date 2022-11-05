@@ -55,23 +55,7 @@ $(document).ready(function() {
 
     });
 
-    function folder(id) {
-        $.ajax({
-            type: "PUT",
-            url: route,
-            data: { id: id },
-            dataType: 'json',
-            headers: {
-                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(result) {
-                console.log(result);
-            },
-            error: function(result) {
-                console.log(result);
-            }
-        });
-    }
+
 
     let edit = document.querySelectorAll('.edit');
     let text = document.querySelectorAll('.text');
@@ -85,7 +69,6 @@ $(document).ready(function() {
                 text[i].removeAttribute('contentEditable');
             } else {
                 this.textContent = "Ok";
-                folder(this.dataset.id)
                 text[i].setAttribute('contentEditable', true);
                 text[i].focus();
             }
