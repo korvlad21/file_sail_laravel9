@@ -76,9 +76,11 @@ class FolderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $folder = Folder::find($request->id);
+        $folder = Folder::find($id);
+        $folder->name = $request->name;
+        $folder->save();
         return response()->json($folder);
     }
 

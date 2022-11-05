@@ -55,7 +55,24 @@ $(document).ready(function() {
 
     });
 
-
+    function folder(id, name) {
+        console.log(name);
+        $.ajax({
+            type: "PUT",
+            url: window.location.origin + '/folders/' + id,
+            data: { name: name },
+            dataType: 'json',
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(result) {
+                console.log(result);
+            },
+            error: function(result) {
+                console.log(result);
+            }
+        });
+    }
 
     let edit = document.querySelectorAll('.edit');
     let text = document.querySelectorAll('.text');
@@ -65,10 +82,15 @@ $(document).ready(function() {
 
         edit[i].addEventListener('click', function() {
             if (editMode) {
+                let id = this.dataset.id;
+
+                let name = text[i].innerText;
+                folder(id, name);
                 this.textContent = "✎";
                 text[i].removeAttribute('contentEditable');
             } else {
                 this.textContent = "Ok";
+
                 text[i].setAttribute('contentEditable', true);
                 text[i].focus();
             }
